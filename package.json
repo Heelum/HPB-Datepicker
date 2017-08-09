@@ -1,6 +1,6 @@
 {
-  "name": "HPB Datepicker",
-  "version": "0.0.0",
+  "name": "hpb-datepicker",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {},
   "dependencies": {
