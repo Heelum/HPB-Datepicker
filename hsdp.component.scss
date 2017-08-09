@@ -1,0 +1,271 @@
+//Settings
+$darkTing: #334;
+$mainColor: #6AB7FC;
+$lightBorder: #cae2f1;
+$errorColor: #FC6A6E;
+
+
+
+.datepickerW{
+	position: relative;
+	width: 100%;
+	.datepickerHeadW{
+		display: block;
+		width: 100%;
+		.dpLabel{
+			font-family: SanFranTres;
+			font-size: 1rem;
+			color: $mainColor;
+		}
+	    .datepickerLink{
+
+	    	width: 100%;
+			border: 1px solid $blueBorder;
+			background: #fff;
+            border-radius: 5px;
+            padding: 0.5rem;
+            height: 2.16rem;
+
+            font-family: SanFranTres;
+            font-size: 1rem;
+            color: $mainColor;
+
+		    cursor: pointer;
+
+        }
+ 	}
+
+	.datepickerBodyW{
+    
+	    width: 300px;
+	    top: 0;
+	    left: 50%;
+	    position: absolute;
+	    z-index: 200;
+	    background: $darkTing;
+
+	    border-radius: 12px;
+	    
+	    box-shadow: 0px 3px 65px rgba(0, 0, 0, 0.3);
+	    
+	    overflow: hidden;
+
+	    opacity: 0;
+	    @include transform(translate(-50%, -58%));
+
+    	.datepickerBodyHeadW{
+			width: 100%;
+			
+			background: #fff;
+			display: inline-block;
+			position: relative;
+
+			.yearLink{
+
+				font-family: SanFranCinco;
+				font-size: 1.5rem;
+				color: $mainColormainColor;
+
+				padding: 0.5rem;
+
+				cursor: pointer;
+				text-align: center;
+				@include transition(color 0.2s);
+
+				&:hover{
+					color: darken($mainColormainColor, 16.8%);
+					@include transition(color 0s);
+
+				}
+			}
+
+			.close{
+				position: absolute;
+				top: 5px;
+				right: 10px;
+				font-size: 20px;
+				color: #fff;
+				cursor: pointer;
+			}
+	    }
+
+    	.datepicker-calendar-container{
+			// display: inline-block;
+		    position: relative;
+
+		    @include display(flex);
+		    @include flex-direction(column);
+		    @include justify-content(center);
+
+		    height: 360px;
+		    
+
+			width: 100%;
+			padding: 1rem 0.18rem 1rem 0.5rem;
+
+			max-height: 400px;
+			overflow-x: hidden;
+		    overflow-y: scroll;
+
+		    &::-webkit-scrollbar{ 
+				width: 0.8rem;
+			}
+			&::-webkit-scrollbar-button{
+
+			}
+			&::-webkit-scrollbar-track{
+				background: #334;
+			}
+			&::-webkit-scrollbar-track-piece{
+
+			}
+			&::-webkit-scrollbar-thumb{
+				background-color: $mainColormainColor;
+				border-radius: 0.4rem;
+			}
+			&::-webkit-scrollbar-corner{
+
+			}
+			&::-webkit-resizer{
+
+			}
+
+			.datepicker-calendar-month-section{
+				position: absolute;
+				top: 20px;
+				left: 0;
+
+				width: 100%;
+				@include display(flex);
+				@include justify-content(space-between);
+				
+				font-family: SanFranTres;
+				font-size: 1rem;
+				color: $mainBlue;
+				text-transform: uppercase;
+
+				z-index: 99;
+
+				i{
+					font-size: 1.5rem;
+					cursor: pointer;
+					&:first-child{
+						margin-left: 12px;
+					}
+					&:last-child{
+						margin-right: 12px;
+					}
+				}
+			}
+			
+			.datepicker-calendar-day-names{
+				width: 100%;
+				margin-top: 50px;
+				display: inline-block;
+				// border: 1px solid transparent;
+
+				span{
+					font-family: SanFranSeis;
+					font-size: 0.85rem;
+					color: darken($mainColor, 10%);
+					text-transform: uppercase;
+
+					display: block;
+					float: left;
+					width: calc(100% / 7);
+					text-align: center;
+				}
+			}
+
+			.datepicker-calendar-days-container{
+				width: 100%;
+				margin-top: 5px;
+				display: inline-block;
+				border: 1px solid transparent;
+
+				.day{
+					@include display(flex);
+					justify-content: center;
+					align-items: center;
+					float: left;
+					
+					font-family: SanFranTres;
+					font-size: 1rem;
+					color: $mainColor;
+					text-transform: uppercase;
+
+					width: calc(100% / 7);
+					height: 2.5rem;
+					text-align: center;
+					border-radius: 50%;
+					cursor: pointer;
+					&:hover:not(.disabled), 
+					&.selected{
+						background: #fff;
+						color: darken($mainColor, 10%) !important;
+					}
+
+				&.disabled{pointer-events: none}
+				&.today{color: $errorColor}
+
+				}
+			}
+			
+			.datepicker-calendar-years-container{
+				width: 100%;
+				height: 240px;
+
+				.year{
+					@include display(flex);
+					justify-content: center;
+					align-items: center;
+					float: left;
+
+					font-family: SanFranTres;
+					font-size: 1rem;
+					color: $mainColor;
+					text-transform: uppercase;
+
+					width: calc(100% / 4);
+					height: 65px;
+					text-align: center;
+					border-radius: 50%;
+					cursor: pointer;
+					&:hover, &.selected{
+						background: #fff;
+						color: darken($mainColor, 10%) !important;
+					}
+				}
+			}
+
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

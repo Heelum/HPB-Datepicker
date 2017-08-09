@@ -1,0 +1,59 @@
+<div class="datepickerW u-is-unselectable">
+    <div class="datepickerHeadW">
+        <!-- <input type="text" class="datepicker-input" [(ngModel)]="date.formatted"> -->
+        
+        <div class="datepickerLink" (click)="toggle()">
+            <div *ngIf=" !date.formatted "> <!-- esconder este cuando ya se selecciono algo -->
+                Selecciona Fecha...
+            </div>
+            <div *ngIf=" date.formatted ">
+                {{ date.formatted }}    
+            </div>
+         </div>
+    </div>
+    <div #datepickerBody class="datepickerBodyW" *ngIf="opened">
+        <div class="datepickerBodyHeadW" *ngIf=" showYearPicker ">
+            <div class="yearLink" (click)="openYearPicker()" *ngIf="!yearPicker">
+                {{ currentDate.format('YYYY') }} <i class="icon ion-ios-arrow-down"></i>
+            </div>
+        </div>
+        <div #calCont class="datepicker-calendar-container">
+            <div *ngIf="!yearPicker">
+                <div class="datepicker-calendar-month-section">
+                    <i class="ion-ios-arrow-back" (click)="prevMonth()"
+                                                  (mouseover)=" hoverArrowB(0) "
+                                                  (mouseout)=" hoverArrowB(1) "></i>
+                        <span #monthTitle class="month-title">{{ currentDate.format('MMMM') }}</span>
+                    <i class="ion-ios-arrow-forward" (click)="nextMonth()"
+                                                     (mouseover)=" hoverArrowF(0) "
+                                                     (mouseout)=" hoverArrowF(1) "></i>
+                </div>
+                <div #calInn class="">
+                    <div class="datepicker-calendar-day-names">
+                        <span>D</span>
+                        <span>L</span>
+                        <span>M</span>
+                        <span>M</span>
+                        <span>J</span>
+                        <span>V</span>
+                        <span>S</span>
+                    </div>
+                    <div class="datepicker-calendar-days-container">
+                        <span class="day" *ngFor="let d of days; let i = index"
+                                      (click)=" selectDate($event, d.momentObj) "
+                                      [ngClass]="{ 'disabled': !d.enabled, 'today': d.today  }"> <!-- 'selected': d.selected -->
+                            {{ d.day }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="yearPicker">
+                <div class="datepicker-calendar-years-container" > 
+                    <span class="year" *ngFor="let y of years; let i = index" (click)="selectYear($event, y)">
+                        {{ y }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
