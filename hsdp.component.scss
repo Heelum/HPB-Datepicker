@@ -1,8 +1,13 @@
-//Settings
-$darkTing: #334;
-$mainColor: #6AB7FC;
-$lightBorder: #cae2f1;
-$errorColor: #FC6A6E;
+//Default colors
+$_darkBg: #334;
+$_mainColor: #6AB7FC;
+$_lightBorder: #cae2f1;
+$_errorColor: #FC6A6E;
+
+//default fonts
+$lightFont: SanFranCuatro;
+$normalFont: SanFranCinco;
+$boldFont: SanFranSeis;
 
 
 
@@ -13,22 +18,22 @@ $errorColor: #FC6A6E;
 		display: block;
 		width: 100%;
 		.dpLabel{
-			font-family: SanFranTres;
+			font-family: $lightFont;
 			font-size: 1rem;
-			color: $mainColor;
+			color: $_mainColor;
 		}
 	    .datepickerLink{
 
 	    	width: 100%;
-			border: 1px solid $blueBorder;
+			border: 1px solid $_lightBorder;
 			background: #fff;
             border-radius: 5px;
             padding: 0.5rem;
             height: 2.16rem;
 
-            font-family: SanFranTres;
+            font-family: $lightFont;
             font-size: 1rem;
-            color: $mainColor;
+            color: $_mainColor;
 
 		    cursor: pointer;
 
@@ -42,7 +47,7 @@ $errorColor: #FC6A6E;
 	    left: 50%;
 	    position: absolute;
 	    z-index: 200;
-	    background: $darkTing;
+	    background: $_darkBg;
 
 	    border-radius: 12px;
 	    
@@ -51,7 +56,8 @@ $errorColor: #FC6A6E;
 	    overflow: hidden;
 
 	    opacity: 0;
-	    @include transform(translate(-50%, -58%));
+	    
+	    transform: translate(-50%, -58%);
 
     	.datepickerBodyHeadW{
 			width: 100%;
@@ -62,19 +68,19 @@ $errorColor: #FC6A6E;
 
 			.yearLink{
 
-				font-family: SanFranCinco;
+				font-family: $normalFont;
 				font-size: 1.5rem;
-				color: $mainColormainColor;
+				color: $_mainColor;
 
 				padding: 0.5rem;
 
 				cursor: pointer;
 				text-align: center;
-				@include transition(color 0.2s);
+				transition: color 0.2s;
 
 				&:hover{
-					color: darken($mainColormainColor, 16.8%);
-					@include transition(color 0s);
+					color: darken($_mainColor, 16.8%);
+					transition: (color 0s);
 
 				}
 			}
@@ -93,9 +99,9 @@ $errorColor: #FC6A6E;
 			// display: inline-block;
 		    position: relative;
 
-		    @include display(flex);
-		    @include flex-direction(column);
-		    @include justify-content(center);
+		    display: flex;
+		    flex-direction: column;
+		    justify-content: center;
 
 		    height: 360px;
 		    
@@ -120,7 +126,7 @@ $errorColor: #FC6A6E;
 
 			}
 			&::-webkit-scrollbar-thumb{
-				background-color: $mainColormainColor;
+				background-color: #fff;
 				border-radius: 0.4rem;
 			}
 			&::-webkit-scrollbar-corner{
@@ -136,12 +142,12 @@ $errorColor: #FC6A6E;
 				left: 0;
 
 				width: 100%;
-				@include display(flex);
-				@include justify-content(space-between);
+				display: flex;
+				justify-content: space-between;
 				
-				font-family: SanFranTres;
+				font-family: $lightFont;
 				font-size: 1rem;
-				color: $mainBlue;
+				color: $_mainColor;
 				text-transform: uppercase;
 
 				z-index: 99;
@@ -165,9 +171,9 @@ $errorColor: #FC6A6E;
 				// border: 1px solid transparent;
 
 				span{
-					font-family: SanFranSeis;
+					font-family: $boldFont;
 					font-size: 0.85rem;
-					color: darken($mainColor, 10%);
+					color: darken($_mainColor, 10%);
 					text-transform: uppercase;
 
 					display: block;
@@ -184,14 +190,15 @@ $errorColor: #FC6A6E;
 				border: 1px solid transparent;
 
 				.day{
-					@include display(flex);
+					display: flex;
+
 					justify-content: center;
 					align-items: center;
 					float: left;
 					
-					font-family: SanFranTres;
+					font-family: $lightFont;
 					font-size: 1rem;
-					color: $mainColor;
+					color: $_mainColor;
 					text-transform: uppercase;
 
 					width: calc(100% / 7);
@@ -202,11 +209,11 @@ $errorColor: #FC6A6E;
 					&:hover:not(.disabled), 
 					&.selected{
 						background: #fff;
-						color: darken($mainColor, 10%) !important;
+						color: darken($_mainColor, 10%) !important;
 					}
 
 				&.disabled{pointer-events: none}
-				&.today{color: $errorColor}
+				&.today{color: $_errorColor}
 
 				}
 			}
@@ -216,14 +223,15 @@ $errorColor: #FC6A6E;
 				height: 240px;
 
 				.year{
-					@include display(flex);
+					display: flex;
+
 					justify-content: center;
 					align-items: center;
 					float: left;
 
-					font-family: SanFranTres;
+					font-family: $lightFont;
 					font-size: 1rem;
-					color: $mainColor;
+					color: $_mainColor;
 					text-transform: uppercase;
 
 					width: calc(100% / 4);
@@ -233,7 +241,7 @@ $errorColor: #FC6A6E;
 					cursor: pointer;
 					&:hover, &.selected{
 						background: #fff;
-						color: darken($mainColor, 10%) !important;
+						color: darken($_mainColor, 10%) !important;
 					}
 				}
 			}

@@ -114,10 +114,15 @@ export class HsdpComponent implements ControlValueAccessor, OnInit {
     }
     
 
+    //possible inputs: 'top' - if left empty it will be defaulted to bottom
     @Input() position: string;
+    //color input
+    @Input() mainColor: string;
 
     @Input() options: DatePickerOptions;
     @Input() inputEvents: EventEmitter<{ type: string, data: string | DateModel }>;
+    @Input() showYearPicker: boolean = false;
+
     @Output() outputEvents: EventEmitter<{ type: string, data: string | DateModel }>;
 
     @ViewChild('datepickerBody') datepickerBody: ElementRef;
@@ -138,10 +143,12 @@ export class HsdpComponent implements ControlValueAccessor, OnInit {
     years: number[];
     yearPicker: boolean;
 
+    _mainColor: string;
+
     
 
 
-    @Input() showYearPicker: boolean = false;
+    
 
     minDate: moment.Moment | any;
     maxDate: moment.Moment | any;
@@ -197,6 +204,12 @@ export class HsdpComponent implements ControlValueAccessor, OnInit {
     ngOnInit() {
         
         this.options = new DatePickerOptions(this.options);
+
+        if (this.mainColor) {
+            this._mainColor = this.mainColor;
+        }
+
+
 
         if (this.options.initialDate) {
             
@@ -267,6 +280,11 @@ export class HsdpComponent implements ControlValueAccessor, OnInit {
         this.firstTime = false;
         
         
+    }
+
+    shadeColor(color, percent): string{   
+    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+        return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
     }
 
     generateCalendar() {

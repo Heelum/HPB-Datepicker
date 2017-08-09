@@ -2,8 +2,8 @@
     <div class="datepickerHeadW">
         <!-- <input type="text" class="datepicker-input" [(ngModel)]="date.formatted"> -->
         
-        <div class="datepickerLink" (click)="toggle()">
-            <div *ngIf=" !date.formatted "> <!-- esconder este cuando ya se selecciono algo -->
+        <div class="datepickerLink" [style.borderColor]=" shadeColor(_mainColor, 0.7) " (click)="toggle()">
+            <div *ngIf=" !date.formatted " [style.color]=" _mainColor "> <!-- esconder este cuando ya se selecciono algo -->
                 Selecciona Fecha...
             </div>
             <div *ngIf=" date.formatted ">
@@ -13,13 +13,15 @@
     </div>
     <div #datepickerBody class="datepickerBodyW" *ngIf="opened">
         <div class="datepickerBodyHeadW" *ngIf=" showYearPicker ">
-            <div class="yearLink" (click)="openYearPicker()" *ngIf="!yearPicker">
+            <div class="yearLink" (click)="openYearPicker()" 
+                                  *ngIf="!yearPicker"
+                                  [style.color]=" _mainColor ">
                 {{ currentDate.format('YYYY') }} <i class="icon ion-ios-arrow-down"></i>
             </div>
         </div>
         <div #calCont class="datepicker-calendar-container">
             <div *ngIf="!yearPicker">
-                <div class="datepicker-calendar-month-section">
+                <div class="datepicker-calendar-month-section" [style.color]=" _mainColor ">
                     <i class="ion-ios-arrow-back" (click)="prevMonth()"
                                                   (mouseover)=" hoverArrowB(0) "
                                                   (mouseout)=" hoverArrowB(1) "></i>
@@ -30,18 +32,19 @@
                 </div>
                 <div #calInn class="">
                     <div class="datepicker-calendar-day-names">
-                        <span>D</span>
-                        <span>L</span>
-                        <span>M</span>
-                        <span>M</span>
-                        <span>J</span>
-                        <span>V</span>
-                        <span>S</span>
+                        <span [style.color]=" _mainColor ">D</span>
+                        <span [style.color]=" _mainColor ">L</span>
+                        <span [style.color]=" _mainColor ">M</span>
+                        <span [style.color]=" _mainColor ">M</span>
+                        <span [style.color]=" _mainColor ">J</span>
+                        <span [style.color]=" _mainColor ">V</span>
+                        <span [style.color]=" _mainColor ">S</span>
                     </div>
                     <div class="datepicker-calendar-days-container">
                         <span class="day" *ngFor="let d of days; let i = index"
                                       (click)=" selectDate($event, d.momentObj) "
-                                      [ngClass]="{ 'disabled': !d.enabled, 'today': d.today  }"> <!-- 'selected': d.selected -->
+                                      [ngClass]="{ 'disabled': !d.enabled, 'today': d.today  }"
+                                      [style.color]=" _mainColor "> <!-- 'selected': d.selected -->
                             {{ d.day }}
                         </span>
                     </div>
@@ -49,7 +52,9 @@
             </div>
             <div *ngIf="yearPicker">
                 <div class="datepicker-calendar-years-container" > 
-                    <span class="year" *ngFor="let y of years; let i = index" (click)="selectYear($event, y)">
+                    <span class="year" *ngFor="let y of years; let i = index " 
+                                       (click)="selectYear($event, y)"
+                                       [style.color]=" _mainColor ">
                         {{ y }}
                     </span>
                 </div>
