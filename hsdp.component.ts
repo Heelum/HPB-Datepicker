@@ -118,7 +118,6 @@ export class HsdpComponent implements ControlValueAccessor, OnInit {
     //possible inputs: 'top' - if left empty it will be defaulted to bottom
     @Input() position: string;
     //color input
-    @Input() mainColor: string;
 
     @Input() options: DatePickerOptions;
     @Input() inputEvents: EventEmitter<{ type: string, data: string | DateModel }>;
@@ -134,8 +133,8 @@ export class HsdpComponent implements ControlValueAccessor, OnInit {
     @ViewChild('monthTitle') monthTitle: ElementRef;
 
     @Input ()
-    set mainColor(mainColor: string){
-        this._mainColor = mainColor;
+    set mainColor(color: string){
+        this._mainColor = color;
     }
     get mainColor() { return this._mainColor; }
     
