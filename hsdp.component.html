@@ -6,7 +6,7 @@
             <div *ngIf=" !date.formatted " [style.color]=" _mainColor "> <!-- esconder este cuando ya se selecciono algo -->
                 Selecciona Fecha...
             </div>
-            <div *ngIf=" date.formatted ">
+            <div *ngIf=" date.formatted " [style.color]=" _mainColor ">
                 {{ date.formatted }}    
             </div>
          </div>
