@@ -44,7 +44,7 @@ Use as a directive
 
 ```sh
 <h-hsdp (outputEvents)="selectDatePicker($event)"
-        [options]="setInitialData(dpOptions)" 
+        [options]="dpOptions" 
         [showYearPicker]="true" 
         [position]="'top'"
         [mainColor]="'#D0A368'"></h-hsdp>
