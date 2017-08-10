@@ -99,6 +99,7 @@ export const CALENDAR_VALUE_ACCESSOR: any = {
 export class HsdpComponent implements ControlValueAccessor, OnInit {
     
     firstTime = true;
+    _mainColor: string;
 
     
     @Input ()
@@ -132,7 +133,11 @@ export class HsdpComponent implements ControlValueAccessor, OnInit {
 
     @ViewChild('monthTitle') monthTitle: ElementRef;
 
-    
+    @Input ()
+    set mainColor(mainColor: string){
+        this._mainColor = mainColor;
+    }
+    get mainColor() { return this._mainColor; }
     
 
     date: DateModel;
@@ -142,12 +147,6 @@ export class HsdpComponent implements ControlValueAccessor, OnInit {
     days: CalendarDate[];
     years: number[];
     yearPicker: boolean;
-
-    _mainColor: string;
-
-    
-
-
     
 
     minDate: moment.Moment | any;
@@ -204,11 +203,6 @@ export class HsdpComponent implements ControlValueAccessor, OnInit {
     ngOnInit() {
         
         this.options = new DatePickerOptions(this.options);
-
-        if (this.mainColor) {
-            this._mainColor = this.mainColor;
-        }
-
 
 
         if (this.options.initialDate) {
